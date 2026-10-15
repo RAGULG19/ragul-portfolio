@@ -1,0 +1,217 @@
+/* ============================================================
+   Education — cinematic vertical timeline
+   ============================================================ */
+
+.education-timeline {
+  position: relative;
+  padding-left: 64px;
+}
+
+.timeline-track {
+  position: absolute;
+  left: 21px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: rgba(148, 170, 195, 0.14);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.timeline-progress {
+  position: absolute;
+  inset: 0;
+  transform-origin: top center;
+  background: linear-gradient(180deg, var(--cyan), var(--violet));
+  box-shadow: 0 0 14px rgba(var(--cyan-rgb), 0.6);
+}
+
+.education-item {
+  position: relative;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -64px;
+  top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(150deg, #0d1830, #070d1a);
+  border: 1px solid rgba(var(--cyan-rgb), 0.5);
+  color: var(--cyan);
+  box-shadow: 0 0 26px rgba(var(--cyan-rgb), 0.3);
+}
+
+.timeline-marker-ring {
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1px dashed rgba(var(--cyan-rgb), 0.35);
+  animation: orbit-spin 18s linear infinite;
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.education-card {
+  position: relative;
+  padding: clamp(26px, 4vw, 40px);
+  overflow: hidden;
+}
+
+.education-card::after {
+  content: '';
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--cyan-rgb), 0.14),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.education-card-head {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 30px;
+}
+
+.education-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.education-card h3 {
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  margin-bottom: 10px;
+  max-width: 560px;
+}
+
+.education-institution {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.education-cgpa {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 108px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(var(--violet-rgb), 0.4);
+  background: linear-gradient(
+    160deg,
+    rgba(var(--violet-rgb), 0.14),
+    rgba(6, 11, 21, 0.4)
+  );
+}
+
+.education-cgpa span {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--violet-2);
+}
+
+.education-cgpa strong {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.education-meta {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0;
+}
+
+.education-meta > div {
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.education-meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+.education-meta dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 767px) {
+  .education-timeline {
+    padding-left: 52px;
+  }
+
+  .timeline-track {
+    left: 15px;
+  }
+
+  .timeline-marker {
+    left: -52px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .timeline-marker svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .education-card-head {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .education-cgpa {
+    flex-direction: row;
+    gap: 12px;
+    min-width: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .education-meta {
+    grid-template-columns: 1fr;
+  }
+}

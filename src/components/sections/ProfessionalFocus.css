@@ -1,0 +1,185 @@
+/* ============================================================
+   Professional focus — animated node cards (unranked)
+   ============================================================ */
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.focus-node {
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: 30px 26px 34px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: linear-gradient(
+    165deg,
+    rgba(13, 22, 40, 0.7),
+    rgba(6, 11, 21, 0.58)
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+  text-align: center;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.focus-node:hover {
+  border-color: rgba(var(--cyan-rgb), 0.45);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.45),
+    0 0 46px rgba(var(--cyan-rgb), 0.08);
+}
+
+/* Cursor-tracked glare (vars set by TiltCard) */
+.focus-node::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.06),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.focus-node:hover::after {
+  opacity: 1;
+}
+
+.focus-node-1:hover,
+.focus-node-4:hover {
+  border-color: rgba(var(--violet-rgb), 0.48);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.45),
+    0 0 46px rgba(var(--violet-rgb), 0.1);
+}
+
+/* Ambient orb behind each icon */
+.focus-orb {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--cyan-rgb), 0.16),
+    transparent 70%
+  );
+  filter: blur(10px);
+  animation: focus-breathe 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.focus-node-1 .focus-orb,
+.focus-node-4 .focus-orb {
+  background: radial-gradient(
+    circle,
+    rgba(var(--violet-rgb), 0.18),
+    transparent 70%
+  );
+  animation-delay: 1.4s;
+}
+
+.focus-node-2 .focus-orb,
+.focus-node-5 .focus-orb {
+  animation-delay: 2.6s;
+}
+
+@keyframes focus-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.12);
+  }
+}
+
+.focus-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 20px;
+  border-radius: 17px;
+  border: 1px solid rgba(var(--cyan-rgb), 0.35);
+  background: rgba(var(--cyan-rgb), 0.07);
+  color: var(--cyan);
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease;
+}
+
+.focus-node-1 .focus-icon,
+.focus-node-4 .focus-icon {
+  border-color: rgba(var(--violet-rgb), 0.4);
+  background: rgba(var(--violet-rgb), 0.08);
+  color: var(--violet-2);
+}
+
+.focus-node:hover .focus-icon {
+  transform: translateY(-5px) scale(1.06) rotate(-4deg);
+  border-color: currentColor;
+}
+
+.focus-node h3 {
+  position: relative;
+  font-size: clamp(1rem, 1.7vw, 1.18rem);
+  letter-spacing: 0.01em;
+  margin-bottom: 0;
+}
+
+.focus-link-line {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 18px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--cyan-rgb), 0.5),
+    transparent
+  );
+  transform: scaleX(0.3);
+  opacity: 0.5;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+}
+
+.focus-node:hover .focus-link-line {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1024px) {
+  .focus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .focus-grid {
+    grid-template-columns: 1fr;
+  }
+}

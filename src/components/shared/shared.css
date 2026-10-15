@@ -1,0 +1,307 @@
+/* ============================================================
+   Shared layout atoms — container, sections, buttons, chips
+   ============================================================ */
+
+.portfolio-shell {
+  position: relative;
+  min-height: 100vh;
+  color: var(--text);
+  background: transparent;
+}
+
+.container {
+  width: min(1200px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+}
+
+.section-shell {
+  position: relative;
+  padding: clamp(96px, 13vh, 160px) 0;
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+/* ---------- Section heading ---------- */
+
+.section-heading {
+  max-width: 880px;
+  margin-bottom: clamp(44px, 6vw, 72px);
+}
+
+.section-kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.section-kicker-index {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--cyan);
+}
+
+.section-kicker-rule {
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--cyan-rgb), 0.7),
+    rgba(var(--violet-rgb), 0.4)
+  );
+}
+
+.section-kicker-text {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.section-title {
+  font-size: clamp(2.1rem, 4.6vw, 3.5rem);
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.section-title-editorial {
+  font-size: clamp(3.2rem, 11vw, 8rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  line-height: 0.95;
+  margin-bottom: 26px;
+}
+
+.section-title .accent,
+.text-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--cyan-2) 0%,
+    var(--violet-2) 85%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-description {
+  max-width: 640px;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+/* ---------- Glass panel ---------- */
+
+.glass-panel {
+  position: relative;
+  background: linear-gradient(
+    155deg,
+    rgba(15, 24, 42, 0.72),
+    rgba(6, 11, 21, 0.58)
+  );
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    140deg,
+    rgba(var(--cyan-rgb), 0.08),
+    transparent 38%,
+    transparent 65%,
+    rgba(var(--violet-rgb), 0.07)
+  );
+  pointer-events: none;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 28px;
+  border-radius: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+  will-change: transform;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.btn .btn-arrow,
+.btn .btn-icon {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-primary {
+  background: linear-gradient(115deg, var(--cyan) 0%, #6ea8ff 52%, var(--violet) 100%);
+  color: #03060d;
+  border: 1px solid transparent;
+  box-shadow:
+    0 10px 34px rgba(var(--cyan-rgb), 0.22),
+    0 4px 16px rgba(var(--violet-rgb), 0.18);
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 16px 44px rgba(var(--cyan-rgb), 0.32),
+    0 6px 22px rgba(var(--violet-rgb), 0.26);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(var(--cyan-rgb), 0.55);
+  background: rgba(var(--cyan-rgb), 0.07);
+  box-shadow: 0 10px 30px rgba(var(--cyan-rgb), 0.12);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px dashed var(--line-strong);
+  color: var(--text-soft);
+}
+
+.btn-ghost:hover {
+  border-color: rgba(var(--violet-rgb), 0.6);
+  color: var(--text);
+  background: rgba(var(--violet-rgb), 0.07);
+}
+
+.magnetic-wrap {
+  display: inline-flex;
+}
+
+.magnetic-block {
+  display: block;
+  width: 100%;
+}
+
+/* ---------- Chips & badges ---------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.9);
+  animation: badge-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.82);
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.028);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.chip:hover {
+  border-color: rgba(var(--cyan-rgb), 0.5);
+  background: rgba(var(--cyan-rgb), 0.07);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 32px, 1200px);
+  }
+
+  .section-shell {
+    padding: clamp(72px, 11vh, 110px) 0;
+  }
+
+  .btn {
+    padding: 14px 22px;
+    font-size: 0.72rem;
+  }
+}

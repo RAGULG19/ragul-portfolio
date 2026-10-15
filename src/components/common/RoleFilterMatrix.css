@@ -1,0 +1,10 @@
+.role-filter-matrix { position: relative; z-index: 2; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 11px 20px; margin-top: -10px; margin-bottom: 36px; padding: 16px 20px; border: 1px solid rgba(var(--cyan-rgb),.19); border-radius: 18px; background: linear-gradient(110deg,rgba(var(--cyan-rgb),.045),rgba(var(--violet-rgb),.055)),rgba(7,13,24,.73); backdrop-filter: blur(16px); box-shadow: 0 15px 42px rgba(0,0,0,.2); }
+.role-filter-heading { display: flex; align-items: center; gap: 8px; color: var(--text-soft); font: .68rem var(--font-mono); letter-spacing: .05em; white-space: nowrap; }
+.role-filter-heading svg { color: var(--cyan); }
+.role-filter-heading strong { color: var(--cyan); font-weight: 600; }
+.role-filter-options { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+.role-filter-options button { min-height: 35px; padding: 6px 11px; border: 1px solid rgba(148,170,195,.17); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.025); font-size: .69rem; cursor: pointer; transition: color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease; }
+.role-filter-options button:hover,.role-filter-options button.is-active { color: var(--text); border-color: rgba(var(--cyan-rgb),.5); background: rgba(var(--cyan-rgb),.09); }
+.role-filter-options button.is-active { box-shadow: 0 0 16px rgba(var(--cyan-rgb),.08); }
+.role-filter-matrix > p { grid-column: 1/-1; margin: -1px 0 0; color: var(--muted); font-size: .68rem; }
+@media (max-width: 767px) { .role-filter-matrix { grid-template-columns: minmax(0,1fr); margin-top: 0; padding: 14px; gap: 10px; } .role-filter-heading { flex-wrap: wrap; } .role-filter-options { justify-content: flex-start; } .role-filter-options button { flex: 1 1 calc(50% - 8px); } }

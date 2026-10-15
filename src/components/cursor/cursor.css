@@ -1,0 +1,80 @@
+/* Custom cursor — desktop, fine-pointer only */
+
+.cursor-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  pointer-events: none;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: var(--cyan);
+  box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.9);
+}
+
+.cursor-ring {
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  border: 1px solid rgba(var(--cyan-rgb), 0.55);
+  background: rgba(var(--cyan-rgb), 0.04);
+  transition:
+    opacity 0.3s ease,
+    width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    margin 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    background-color 0.28s ease;
+}
+
+.cursor-ring.is-active {
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  border-color: rgba(var(--violet-rgb), 0.8);
+  background: rgba(var(--violet-rgb), 0.08);
+}
+
+/* Hide the native cursor only while the custom one is running */
+html.custom-cursor-active,
+html.custom-cursor-active a,
+html.custom-cursor-active button,
+html.custom-cursor-active [role='button'],
+html.custom-cursor-active label {
+  cursor: none;
+}
+
+html.custom-cursor-active input,
+html.custom-cursor-active textarea {
+  cursor: text;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-layer {
+    display: none;
+  }
+
+  html.custom-cursor-active,
+  html.custom-cursor-active * {
+    cursor: auto !important;
+  }
+
+  html.custom-cursor-active input,
+  html.custom-cursor-active textarea {
+    cursor: text !important;
+  }
+}

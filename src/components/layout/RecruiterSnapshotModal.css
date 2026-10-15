@@ -1,0 +1,23 @@
+.snapshot-backdrop { position: fixed; inset: 0; z-index: 120; display: flex; justify-content: flex-end; background: rgba(1,4,10,.7); backdrop-filter: blur(7px); }
+.snapshot-drawer { width: min(490px,100%); height: 100%; overflow-y: auto; padding: clamp(22px,5vw,38px); border-left: 1px solid rgba(var(--cyan-rgb),.24); background: radial-gradient(ellipse at 100% 0,rgba(var(--violet-rgb),.13),transparent 46%),radial-gradient(ellipse at 0 25%,rgba(var(--cyan-rgb),.1),transparent 44%),rgba(5,10,19,.97); box-shadow: -28px 0 90px rgba(0,0,0,.52); }
+.snapshot-topline { display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.snapshot-topline > span { display: inline-flex; align-items: center; gap: 8px; color: var(--cyan); font: .62rem var(--font-mono); letter-spacing: .12em; }
+.snapshot-topline button { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 12px; color: var(--text-soft); cursor: pointer; }
+.snapshot-heading { padding: 34px 0 23px; }
+.snapshot-kicker { color: var(--muted); font: .58rem var(--font-mono); letter-spacing: .18em; }
+.snapshot-heading h2 { margin: 9px 0 7px; font-size: clamp(2.1rem,8vw,3rem); letter-spacing: -.04em; }
+.snapshot-heading p { margin: 0; color: var(--text-soft); font-size: .84rem; }
+.snapshot-facts { display: grid; grid-template-columns: .7fr 1.45fr 1fr; gap: 8px; }
+.snapshot-facts > div { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 14px 12px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,255,255,.025); }
+.snapshot-facts span { color: var(--muted); font: .53rem var(--font-mono); letter-spacing: .12em; }
+.snapshot-facts strong { color: var(--text); font: 600 .78rem var(--font-display); }
+.snapshot-section { margin: 27px 0 20px; }
+.snapshot-section p { margin: 9px 0 0; color: var(--text-soft); font-size: .86rem; line-height: 1.8; }
+.snapshot-project { display: grid; gap: 8px; padding: 18px; border: 1px solid rgba(var(--cyan-rgb),.23); border-radius: 15px; background: linear-gradient(120deg,rgba(var(--cyan-rgb),.07),rgba(var(--violet-rgb),.07)); text-decoration: none; }
+.snapshot-project strong { font: 600 1.1rem var(--font-display); }
+.snapshot-project > span:last-child { display: flex; align-items: flex-start; gap: 8px; color: var(--text-soft); font-size: .78rem; line-height: 1.6; }
+.snapshot-project > span:last-child svg { flex: 0 0 auto; color: var(--cyan); }
+.snapshot-actions { display: grid; gap: 10px; margin-top: 22px; }
+.snapshot-actions .btn { justify-content: center; min-height: 48px; }
+.snapshot-actions svg { margin-right: 8px; }
+@media (max-width: 480px) { .snapshot-drawer { padding: 20px; } .snapshot-facts > div { padding: 12px 9px; } .snapshot-facts strong { font-size: .69rem; } }
